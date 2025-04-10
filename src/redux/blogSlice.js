@@ -21,7 +21,7 @@ export const fetchBlogById = createAsyncThunk(
   'blogs/fetchBlogById',
   async (id, { rejectWithValue }) => {
     try {
-      const response = await axios.get(`${API_URL}/api/blogs/${id}`);
+      const response = await axios.get(`https://jobify-kefc.onrender.com/api/blogs/${id}`);
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response.data);
