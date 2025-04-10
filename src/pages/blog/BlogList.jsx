@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchBlogs } from '../../redux/blogSlice';
+import { Link } from 'react-router-dom';
 
 const BlogList = () => {
   const dispatch = useDispatch();
@@ -42,12 +43,9 @@ console.log(blogs)
                 <p className="text-gray-700 mb-4">{contentPreview}...</p>
                 <div className="flex items-center">
                   <span className="text-gray-600 text-sm">By {authorName}</span>
-                  <a
-                    href={`/blogs/${_id}`}
-                    className="ml-auto text-primary hover:underline"
-                  >
-                    Read More 
-                  </a>
+                  <Link to={`/blogs/${_id}`} className="ml-auto text-primary hover:underline">
+  Read More
+</Link>
                 </div>
               </div>
             </div>
