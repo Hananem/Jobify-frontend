@@ -12,7 +12,7 @@ export const fetchUser = createAsyncThunk(
   async (userId, { getState, rejectWithValue }) => {
     const token = getState().user.user.token;
     try {
-      const response = await fetch(`http://localhost:4000/api/users/${userId}`, {
+      const response = await fetch(`https://jobify-kefc.onrender.com/api/users/${userId}`, {
         headers: {
           Authorization: token,
         },
@@ -32,7 +32,7 @@ export const fetchUser = createAsyncThunk(
 export const registerUser = createAsyncThunk(
   "user/registerUser",
   async (userData) => {
-    const response = await fetch("http://localhost:4000/api/users/register", {
+    const response = await fetch("https://jobify-kefc.onrender.com/api/users/register", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(userData),
@@ -44,7 +44,7 @@ export const registerUser = createAsyncThunk(
 export const loginUser = createAsyncThunk(
   "user/loginUser",
   async (credentials) => {
-    const response = await fetch("http://localhost:4000/api/users/login", {
+    const response = await fetch("https://jobify-kefc.onrender.com/api/users/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(credentials),
@@ -62,7 +62,7 @@ export const markInterested = createAsyncThunk(
     const token = getState().user.user.token; // Accessing token from current state
     try {
       // Make API request using token and other data
-      const response = await fetch('http://localhost:4000/api/events/mark-interested', {
+      const response = await fetch('https://jobify-kefc.onrender.com/api/events/mark-interested', {
         method: 'POST',
         headers: {
           Authorization: token,
@@ -93,7 +93,7 @@ export const saveJob = createAsyncThunk(
     // Adjust according to your state structure
     try {
       const response = await axios.post(
-        `http://localhost:4000/api/jobs/${jobId}/save`,
+        `https://jobify-kefc.onrender.com/api/jobs/${jobId}/save`,
         {}, // Empty body
         {
           headers: {
@@ -120,7 +120,7 @@ export const toggleHireJobSeekerPost = createAsyncThunk(
     const token = getState().user.user.token;
     try {
       const response = await axios.post(
-        'http://localhost:4000/api/jobSeeker/hire',
+        'https://jobify-kefc.onrender.com/api/jobSeeker/hire',
         { jobSeekerPostId, hiredUserId, employerId },
         {
           headers: {
@@ -144,7 +144,7 @@ export const uploadProfilePhoto = createAsyncThunk(
   async ({ formData, token }, { rejectWithValue }) => {
     try {
       const response = await axios.post(
-        'http://localhost:4000/api/users/profile/photo',
+        'https://jobify-kefc.onrender.com/api/users/profile/photo',
         formData,
         {
           headers: {
@@ -166,7 +166,7 @@ export const deleteUser = createAsyncThunk(
   'profile/deleteUser',
   async ({ id, token }, { rejectWithValue }) => {
     try {
-      const response = await axios.delete(`http://localhost:4000/api/users/${id}`, {
+      const response = await axios.delete(`https://jobify-kefc.onrender.com/api/users/${id}`, {
         headers: {
           Authorization: token, // Authorization header with token only, no 'Bearer'
         },
